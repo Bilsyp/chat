@@ -1,0 +1,34 @@
+const express  = require("express")
+const app = express();
+const {router,goal} = require("./routes/route")
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+const ws = require("ws")
+app.set("view engine","ejs")
+app.use(express.static('public'))
+
+//app.use("/api",router)
+
+// Middleware
+// app.use('/home', function (req, res,next) {
+//   console.log('Request Type:', req.method)
+//   next()
+// })
+//app.use("/home",goal)
+
+app.get('/', (req, res) => {
+  res.render("index.ejs")
+});
+
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
+  });
+});
+
+server.listen(3000,()=>{
+console.log("server is running")
+console.log(ws)
+})

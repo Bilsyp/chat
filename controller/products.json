@@ -1,0 +1,17 @@
+[{
+  "product":"Baju",
+  "price":"300"
+},
+  {
+    "product":"Jacket",
+    "price":"350"
+  },
+  {
+    "product":"Tv",
+    "price":"455"
+
+  },
+  {
+    "product":"Seragam",
+    "price":"550"
+  }]
